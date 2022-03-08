@@ -1,0 +1,41 @@
+backbone:
+  # [repeats, module, args]
+  # block 1
+  [[1, ConvBlock, [-1, 64, 7, 2, 3, nn.LeakyReLU]],
+   [1, nn.MaxPool2d, [2, 2]],
+   # block 2
+   [1, ConvBlock, [-1, 192, 3, 1, 1, nn.LeakyReLU]],
+   [1, nn.MaxPool2d, [2, 2]],
+   # block 3
+   [1, ConvBlock, [-1, 128, 1, 1, 0, nn.LeakyReLU]],
+   [1, ConvBlock, [-1, 256, 3, 1, 1, nn.LeakyReLU]],
+   [1, ConvBlock, [-1, 256, 1, 1, 0, nn.LeakyReLU]],
+   [1, ConvBlock, [-1, 512, 3, 1, 1, nn.LeakyReLU]],
+   [1, nn.MaxPool2d, [2, 2]],
+   # block 4
+   [1, ConvBlock, [-1, 256, 1, 1, 0, nn.LeakyReLU]],
+   [1, ConvBlock, [-1, 512, 3, 1, 1, nn.LeakyReLU]],
+   [1, ConvBlock, [-1, 256, 1, 1, 0, nn.LeakyReLU]],
+   [1, ConvBlock, [-1, 512, 3, 1, 1, nn.LeakyReLU]],
+   [1, ConvBlock, [-1, 256, 1, 1, 0, nn.LeakyReLU]],
+   [1, ConvBlock, [-1, 512, 3, 1, 1, nn.LeakyReLU]],
+   [1, ConvBlock, [-1, 256, 1, 1, 0, nn.LeakyReLU]],
+   [1, ConvBlock, [-1, 512, 3, 1, 1, nn.LeakyReLU]],
+   [1, ConvBlock, [-1, 512, 1, 1, 0, nn.LeakyReLU]],
+   [1, ConvBlock, [-1, 1024, 3, 1, 1, nn.LeakyReLU]],
+   [1, nn.MaxPool2d, [2, 2]],
+   # block 5
+   [1, ConvBlock, [-1, 512, 1, 1, 0, nn.LeakyReLU]],
+   [1, ConvBlock, [-1, 1024, 3, 1, 1, nn.LeakyReLU]],
+   [1, ConvBlock, [-1, 512, 1, 1, 0, nn.LeakyReLU]],
+   [1, ConvBlock, [-1, 1024, 3, 1, 1, nn.LeakyReLU]],
+   [1, ConvBlock, [-1, 1024, 3, 1, 1, nn.LeakyReLU]],
+   [1, ConvBlock, [-1, 1024, 3, 2, 1, nn.LeakyReLU]],
+   # block 6
+   [2, ConvBlock, [-1, 1024, 3, 1, 1, nn.LeakyReLU]]
+  ]
+head:
+  [[1, nn.Linear, [-1, 496, nn.LeakyReLU]],
+   [1, nn.Dropout, [0.5]],
+   [1, nn.Linear, []]
+  ]
